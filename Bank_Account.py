@@ -25,20 +25,20 @@ class BankAccount(ABC):
         print('Amount Successfully Deposited')
         self.__mini_statement.append(f"{amount} is Deposited")
         return self.__balance
-    @abstractmethod
-    def withdraw(self,amount):
+    def validate_amount(self,amount):
         if  type(amount) is not int:
             raise TypeError('Amount must be an Number and its should be Positive')
         if amount<1:
             raise ValueError('Amount should be Positive')
+        return amount
+    @abstractmethod
+    def withdraw(self,amount):
         if amount>self.__balance:
             raise InsufficientFunds('Insufficient Funds ')
         self.__balance-=amount
         print('Amount Successfully Withdrawn')
         self.__mini_statement.append(f"{amount} is Withdrawn")
         return self.__balance
-    # def transaction(self,k):
-    #     self.__mini_statement.add(k)
     @property
     def transaction(self):
         return self.__mini_statement.copy()

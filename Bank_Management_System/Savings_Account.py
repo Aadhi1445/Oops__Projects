@@ -30,24 +30,24 @@ class SavingsAccount(BankAccount):
                 f"Minium Balance : {self.min_bal}\n"
                 f"Interset Rate : 5%\n"
                 f"Interest Amount : {self.calculate_interest()}")
-account1=SavingsAccount('Aditya',5000)
-try:
-    account1.deposit(500)
-except TypeError as e:
-    print(e)
-except ValueError as e:
-    print('Enter Valid Amount')
-except Exception as e:
-    print(e)
-try :
-    account1.withdraw(500)
-except TypeError as e:
-    print(e)
-except ValueError as e:
-    print(e)
-except Exception as e:
-    print(e)
-print(account1)
-print(account1.transaction)
-print(account1.calculate_interest())
-print(account1.display_details())
+# account1=SavingsAccount('Aditya',5000)
+# try:
+#     account1.deposit(500)
+# except TypeError as e:
+#     print(e)
+# except ValueError as e:
+#     print('Enter Valid Amount')
+# except Exception as e:
+#     print(e)
+# try :
+#     account1.withdraw(500)
+# except TypeError as e:
+#     print(e)
+# except ValueError as e:
+#     print(e)
+# except Exception as e:
+#     print(e)
+# print(account1)
+# print(account1.transaction)
+# print(account1.calculate_interest())
+# print(account1.display_details())

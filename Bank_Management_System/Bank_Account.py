@@ -6,7 +6,7 @@ class BankAccount(ABC):
         self.name=name
         if type(balance) is not int:
             raise TypeError('Balance should be number and positive number')
-        if balance < 1:
+        if balance < 0:
             raise ValueError('Balance should be Positive')
         self.__balance=balance
         self.__mini_statement=[]
@@ -33,6 +33,7 @@ class BankAccount(ABC):
         return amount
     @abstractmethod
     def withdraw(self,amount):
+        amount=self.validate_amount(amount)
         if amount>self.__balance:
             raise InsufficientFunds('Insufficient Funds ')
         self.__balance-=amount

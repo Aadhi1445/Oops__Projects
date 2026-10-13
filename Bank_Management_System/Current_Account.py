@@ -6,6 +6,7 @@ class CurrentAccount(BankAccount):
     def deposit(self,amount):
         super().deposit(amount)
     def withdraw(self,amount):
+        amount=super().validate_amount(amount)
         if amount> self.balance-self.min_bal:
             raise ValueError('Minium Balance Should be Maintained')
         super().withdraw(amount)

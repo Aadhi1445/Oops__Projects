@@ -40,9 +40,18 @@ class BankAccount(ABC):
         print('Amount Successfully Withdrawn')
         self.__mini_statement.append(f"{amount} is Withdrawn")
         return self.__balance
+    # @property
+    def transaction1(self):
+        return self.__mini_statement.copy()
     @property
     def transaction(self):
-        return self.__mini_statement.copy()
+        print('-'*5,'Transactions','-'*5)
+        c=1
+        k=self.transaction1()
+        for i in k:
+            print(f'{c}. {i}')
+            c+=1
+        return 'Transactions Completed'
     def __str__(self):
         return (f"Account Holder's Name : {self.name}\n"
                 f"Account Holder's Balance :{self.balance} ")

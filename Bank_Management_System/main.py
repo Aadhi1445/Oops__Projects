@@ -37,6 +37,76 @@ def ch2():
         next_account_number += 1
     except ValueError as e:
         print('Error: ',e)
+def ch3():
+    acc_no=int(input('Enter Account Number :'))
+    account=accounts.get(acc_no)
+    if account is None:
+        print('Account Not Found...!')
+        return
+    amount=int(input('Enter deposit Amount :'))
+    try:
+        new_balance=account.deposit(amount)
+        print('Updated Balance :',new_balance)
+    except (TypeError,ValueError) as e:
+        print('Error: ',e)
+    except Exception as e:
+        print('Error :', e)
+def ch4():
+    acc_no=int(input('Enter Account Number :'))
+    account=accounts.get(acc_no)
+    if account is None:
+        print('Account Not Found...!')
+        return
+    amount=int(input('Enter Withdraw Amount :'))
+    try:
+        new_balance=account.withdraw(amount)
+        print(f'{amount} withdrawn successfully')
+        print('Updated Balance :',new_balance)
+    except (TypeError,ValueError) as e:
+        print('Error :',e)
+    except Exception as e:
+        print('Error :',e)
+def ch5():
+    acc_no = int(input('Enter Account Number :'))
+    account = accounts.get(acc_no)
+    if account is None:
+        print('Account Not Found...!')
+        return
+    print('Existing Balance: ',account.balance)
+def ch6():
+    acc_no = int(input('Enter Account Number :'))
+    account = accounts.get(acc_no)
+    if account is None:
+        print('Account Not Found...!')
+        return
+    print('Transactional logs:',account.transaction)
+
+def ch7():
+    acc_no = int(input('Enter Account Number :'))
+    account = accounts.get(acc_no)
+    if account is None:
+        print('Account Not Found...!')
+        return
+    print('calculate Interest For\n1.Existing Balance\n2.Provide Amount')
+    choice=int(input('Enter ur Choice: '))
+    if choice==2:
+        amount=int(input('Enter Amount: '))
+        k=account.calculate_interest(amount)
+    else:
+        k=account.calculate_interest()
+    print('Interest Calculated :',k)
+def ch8():
+    acc_no = int(input('Enter Account Number :'))
+    account = accounts.get(acc_no)
+    if account is None:
+        print('Account Not Found...!')
+        return
+    print(account.display_details())
+
+
+
+
+
 
 
 
@@ -60,9 +130,10 @@ if __name__ == '__main__':
         5. Check Balance
         6. View Transaction History
         7. Calculate and Credit Savings Interest
-        8. Exit''')
+        8. Display Account Details
+        9. Exit''')
         choice=input('Enter your Choice: ')
-        if choice=='8':
+        if choice=='9':
             print('Thank you for using our Banking System')
             break
         if choice == '1':
@@ -73,16 +144,26 @@ if __name__ == '__main__':
             ch2()
         elif choice == '3':
             print("Deposit Money")
+            ch3()
         elif choice == '4':
             print("Withdraw Money")
+            ch4()
         elif choice == '5':
             print("Check Balance")
+            ch5()
         elif choice == '6':
             print("View Transaction History")
+            ch6()
         elif choice == '7':
             print("Calculate and Credit Savings Interest")
+            ch7()
+        elif choice=='8':
+            print('Display Account Details')
+            ch8()
         else:
-            print("Invalid choice. Please select between 1 and 8.")
+            print("Invalid choice. Please select between 1 and 9.")
+
+
 
 
 # savings = SavingsAccount("Aditya", 5000)

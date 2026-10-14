@@ -18,18 +18,30 @@ class SavingsAccount(BankAccount):
         if amount > self.balance - self.min_bal:
             raise ValueError('Minium Balance Should be Maintained')
         return super().withdraw(amount)
-    def calculate_interest(self):
-        interest_rate = 0.05
-        interest = self.balance * interest_rate
-        return round(interest)
+
+    def calculate_interest(self, amount=None):
+        if amount is None:
+            interest_rate = 0.05
+            interest = self.balance * interest_rate
+            return round(interest)
+        else:
+            amount = super().validate_amount(amount)
+            interest_rate = 0.05
+            interest = amount* interest_rate
+            return round(interest)
+
     def credit_interest(self):
-        return self.deposit(self.calculate_interest())
+        interest = self.calculate_interest()
+        if interest > 0:
+            self.deposit(interest)
+        return interest
     def display_details(self):
-        return (f"Account Holder: {self.name}\n"
-                f"Account Balance : {self.balance}\n"
-                f"Minium Balance : {self.min_bal}\n"
+        return (f"Saving's Details :--\n"
+                f"Account Holder: {self.name}\n"
+                f"Account Balance : {self.balance}/-\n"
+                f"Minium Balance : {self.min_bal}/-\n"
                 f"Interset Rate : 5%\n"
-                f"Interest Amount : {self.calculate_interest()}")
+                f"Interest Amount for Existing Balance : {self.calculate_interest()}/-")
 # account1=SavingsAccount('Aditya',5000)
 # try:
 #     account1.deposit(500)
